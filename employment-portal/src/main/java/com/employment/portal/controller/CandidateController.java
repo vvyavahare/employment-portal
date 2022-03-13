@@ -75,11 +75,13 @@ public class CandidateController {
 //					.setDescription(candidate.getDescription()).setPublished(candidate.isPublished()).build();
 
 			Set<Address> addresses = new HashSet<Address>();
-			for (Address address : candidate.getAddress()) {
-				address.setCandidate(candidate);
-				addresses.add(address);
+			if (candidate.getAddress() != null) {
+				for (Address address : candidate.getAddress()) {
+					address.setCandidate(candidate);
+					addresses.add(address);
+				}
+				candidate.setAddress(addresses);
 			}
-			candidate.setAddress(addresses);
 			Candidate savedCandidate = candidateService.save(candidate);
 			return new ResponseEntity<>(savedCandidate, HttpStatus.CREATED);
 		} catch (Exception e) {
