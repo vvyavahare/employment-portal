@@ -28,7 +28,7 @@ public class Employer {
 	private Set<Address> address;
 
 	@OneToMany(mappedBy = "employer", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	private List<Address> jobs;
+	private List<Job> jobs;
 
 	public long getId() {
 		return id;
@@ -54,11 +54,11 @@ public class Employer {
 		this.address = address;
 	}
 
-	public List<Address> getJobs() {
+	public List<Job> getJobs() {
 		return jobs;
 	}
 
-	public void setJobs(List<Address> jobs) {
+	public void setJobs(List<Job> jobs) {
 		this.jobs = jobs;
 	}
 

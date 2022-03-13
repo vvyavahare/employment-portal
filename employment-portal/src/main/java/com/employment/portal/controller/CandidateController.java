@@ -1,8 +1,10 @@
 package com.employment.portal.controller;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +22,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.employment.portal.model.Address;
 import com.employment.portal.model.Candidate;
 import com.employment.portal.service.ICandidateService;
 
@@ -71,6 +74,12 @@ public class CandidateController {
 //			Candidate buildCandidate = Candidate.builder().setTitle(candidate.getTitle())
 //					.setDescription(candidate.getDescription()).setPublished(candidate.isPublished()).build();
 
+			Set<Address> addresses = new HashSet<Address>();
+			for (Address address : candidate.getAddress()) {
+				address.setCandidate(candidate);
+				addresses.add(address);
+			}
+			candidate.setAddress(addresses);
 			Candidate savedCandidate = candidateService.save(candidate);
 			return new ResponseEntity<>(savedCandidate, HttpStatus.CREATED);
 		} catch (Exception e) {
@@ -79,14 +88,17 @@ public class CandidateController {
 	}
 
 	@PutMapping("/candidates/{id}")
-	public ResponseEntity<Candidate> updateCandidate(@PathVariable("id") long id, @RequestBody Candidate Candidate) {
-		Optional<Candidate> CandidateData = candidateService.findById(id);
+	public ResponseEntity<Candidate> updateCandidate(@PathVariable("id") long id, @RequestBody Candidate candidate) {
+		Optional<Candidate> candidateData = candidateService.findById(id);
 
-		if (CandidateData.isPresent()) {
-			Candidate candidate = CandidateData.get();
-			candidate.setTitle(Candidate.getTitle());
-			candidate.setProfileDescription(Candidate.getProfileDescription());
-			candidate.setIsActive(Candidate.isActive());
+		if (candidateData.isPresent()) {
+			// Candidate candidateFromDB = candidateData.get();
+			Set<Address> addresses = new HashSet<Address>();
+			for (Address address : candidate.getAddress()) {
+				address.setCandidate(candidate);
+				addresses.add(address);
+			}
+			candidate.setAddress(addresses);
 			return new ResponseEntity<>(candidateService.save(candidate), HttpStatus.OK);
 		} else {
 			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
