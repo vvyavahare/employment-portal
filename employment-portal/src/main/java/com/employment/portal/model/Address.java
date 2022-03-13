@@ -35,14 +35,6 @@ public class Address {
 	@Column(name = "pin_code")
 	private String pinCode;
 
-//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-//	@JoinColumn(name = "address_id", nullable = false)
-//	private Candidate candidate;
-
-//	@ManyToOne(fetch = FetchType.LAZY, optional = false)
-//	@JoinColumn(name = "address_id", nullable = false)
-//	private Employer employer;
-
 	@JsonIgnore
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "employerId", referencedColumnName = "id")

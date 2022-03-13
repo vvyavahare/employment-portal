@@ -8,8 +8,6 @@ import com.employment.portal.model.Job;
 
 public interface IJobsService {
 
-//	List<Employer> findByIsActive(boolean isActive);
-//
 	List<Job> findByRoleContaining(String companyName);
 
 	List<Job> findAll();
