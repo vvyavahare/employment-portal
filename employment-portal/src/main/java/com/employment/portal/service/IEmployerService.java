@@ -7,8 +7,6 @@ import com.employment.portal.model.Employer;
 
 public interface IEmployerService {
 
-//	List<Employer> findByIsActive(boolean isActive);
-//
 	List<Employer> findByCompanyNameContaining(String companyName);
 
 	List<Employer> findAll();

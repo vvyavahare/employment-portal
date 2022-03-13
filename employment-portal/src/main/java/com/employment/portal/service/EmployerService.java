@@ -15,12 +15,6 @@ public class EmployerService implements IEmployerService {
 	@Autowired
 	EmployerRepository employerRepository;
 
-//	@Override
-//	public List<Candidate> findByIsActive(boolean isActive) {
-//
-//		return candidateRepository.findByIsActive(isActive);
-//	}
-
 	@Override
 	public List<Employer> findByCompanyNameContaining(String companyName) {
 

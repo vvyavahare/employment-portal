@@ -10,7 +10,6 @@ import com.employment.portal.model.Employer;
 
 @Repository
 public interface EmployerRepository extends JpaRepository<Employer, Long> {
-//	List<Employer> findByIsActive(boolean isActive);
 
 	List<Employer> findByCompanyNameContaining(String companyName);
 }

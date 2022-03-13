@@ -11,7 +11,6 @@ import com.employment.portal.model.Job;
 
 @Repository
 public interface JobsRepository extends JpaRepository<Job, Long> {
-//	List<Employer> findByIsActive(boolean isActive);
 
 	List<Job> findByRoleContaining(String role);
 }

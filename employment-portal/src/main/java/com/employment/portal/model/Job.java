@@ -38,10 +38,6 @@ public class Job {
 	@Column(name = "job_description")
 	private String jobDescription;
 
-//	@ManyToOne(fetch = FetchType.LAZY, optional = true)
-//	@JoinColumn(name = "job_employer_id", nullable = false)
-//	private Employer employer;
-
 	@JsonIgnore
 	@ManyToOne(optional = true)
 	@JoinColumn(name = "employer_id", referencedColumnName = "id")
@@ -102,7 +98,5 @@ public class Job {
 	public void setJobPostDate(LocalDateTime jobPostDate) {
 		this.jobPostDate = jobPostDate;
 	}
-	
-	
 
 }

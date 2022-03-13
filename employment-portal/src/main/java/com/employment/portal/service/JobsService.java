@@ -17,12 +17,6 @@ public class JobsService implements IJobsService {
 	@Autowired
 	JobsRepository jobsRepository;
 
-//	@Override
-//	public List<Candidate> findByIsActive(boolean isActive) {
-//
-//		return candidateRepository.findByIsActive(isActive);
-//	}
-
 	@Override
 	public List<Job> findByRoleContaining(String role) {
 
