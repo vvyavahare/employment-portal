@@ -35,6 +35,7 @@ public class CandidateController {
 
 	@GetMapping("/candidates")
 	public ResponseEntity<List<Candidate>> getAllCandidates(@RequestParam(required = false) String title) {
+		logger.info("getting all candidates");
 		try {
 			List<Candidate> Candidates = new ArrayList<Candidate>();
 
