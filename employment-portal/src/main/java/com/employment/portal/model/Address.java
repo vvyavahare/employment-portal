@@ -10,6 +10,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 @Entity
 @Table(name = "address")
 public class Address {
@@ -41,12 +43,14 @@ public class Address {
 //	@JoinColumn(name = "address_id", nullable = false)
 //	private Employer employer;
 
-	@ManyToOne(optional = false)
+	@JsonIgnore
+	@ManyToOne(optional = true)
 	@JoinColumn(name = "employerId", referencedColumnName = "id")
 	private Employer employer;
 
-	@ManyToOne(optional = false)
-	@JoinColumn(name = "candidateId", referencedColumnName = "id")
+	@JsonIgnore
+	@ManyToOne(optional = true)
+	@JoinColumn(name = "candidateId", referencedColumnName = "id", nullable = true)
 	private Candidate candidate;
 
 	public long getId() {

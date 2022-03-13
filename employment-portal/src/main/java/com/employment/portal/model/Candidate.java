@@ -124,13 +124,25 @@ public class Candidate {
 		this.profileDescription = profileDescription;
 	}
 
-	public boolean isActive() {
+	public boolean getIsActive() {
 		return isActive;
 	}
 
 	public void setIsActive(boolean isActive) {
 		this.isActive = isActive;
 	}
+	
+	
+
+	public Set<Address> getAddress() {
+		return address;
+	}
+
+	public void setAddress(Set<Address> address) {
+		this.address = address;
+	}
+
+
 
 	public static class CandidateBuilder {
 		private long id;
